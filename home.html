@@ -1,0 +1,5654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunu Artt | Creative Art Gallery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    /**
+ * Sunu Artt - Main Stylesheet
+ * 
+ * Table of Contents:
+ * 1. Variables
+ * 2. Reset & Base Styles
+ * 3. Typography
+ * 4. Layout & Grid
+ * 5. Header & Navigation
+ * 6. Footer
+ * 7. Buttons & Forms
+ * 8. Components
+ * 9. Sections
+ * 10. Utilities
+ * 11. Responsive Styles
+ */
+
+/* ===== 1. Variables ===== */
+:root {
+    /* Colors */
+    --primary-color: #b8860b;
+    --primary-dark: #8e6908;
+    --primary-light: #d9a82c;
+    --secondary-color: #333333;
+    --text-dark: #222222;
+    --text-medium: #555555;
+    --text-light: #888888;
+    --white: #ffffff;
+    --light-bg: #f8f8f8;
+    --border-color: #e0e0e0;
+    --success: #4caf50;
+    --error: #f44336;
+    --warning: #ff9800;
+    --info: #2196f3;
+    
+    /* Typography */
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'Poppins', sans-serif;
+    --base-font-size: 16px;
+    --h1-size: 3.5rem;
+    --h2-size: 2.5rem;
+    --h3-size: 1.75rem;
+    --h4-size: 1.25rem;
+    --h5-size: 1rem;
+    --h6-size: 0.875rem;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 5rem;
+    
+    /* Borders & Shadows */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-round: 50%;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Z-index layers */
+    --z-back: -1;
+    --z-normal: 1;
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+}
+
+/* ===== 2. Reset & Base Styles ===== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--base-font-size);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* ===== 3. Typography ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 {
+    font-size: var(--h1-size);
+}
+
+h2 {
+    font-size: var(--h2-size);
+}
+
+h3 {
+    font-size: var(--h3-size);
+}
+
+h4 {
+    font-size: var(--h4-size);
+}
+
+h5 {
+    font-size: var(--h5-size);
+}
+
+h6 {
+    font-size: var(--h6-size);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.text-light {
+    color: var(--text-light);
+}
+
+/* ===== 4. Layout & Grid ===== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col {
+    flex: 1 0 0%;
+    padding: 0 15px;
+}
+
+/* ===== 5. Header & Navigation ===== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-fixed);
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+
+.header.scrolled {
+    padding: 0.5rem 0;
+    box-shadow: var(--shadow-md);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.logo h1 {
+    font-size: 1.75rem;
+    margin-bottom: 0;
+    letter-spacing: 2px;
+}
+
+.main-nav {
+    display: flex;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin: 0 var(--spacing-sm);
+}
+
+.nav-link {
+    position: relative;
+    font-weight: 500;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width var(--transition-normal);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.search-toggle,
+.cart-btn,
+.menu-toggle {
+    margin-left: var(--spacing-sm);
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    transition: color var(--transition-fast);
+}
+
+.search-toggle:hover,
+.cart-btn:hover,
+.menu-toggle:hover {
+    color: var(--primary-color);
+}
+
+.cart-btn {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-dark);
+    transition: all var(--transition-fast);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 400px;
+    height: 100vh;
+    background-color: var(--white);
+    z-index: var(--z-modal);
+    transition: right var(--transition-normal);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.menu-close {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+}
+
+.mobile-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+}
+
+.mobile-nav-item {
+    margin-bottom: var(--spacing-sm);
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: var(--spacing-xs) 0;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+    color: var(--primary-color);
+}
+
+.mobile-menu-footer {
+    padding: var(--spacing-sm);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.mobile-menu-footer p {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-sm);
+    margin-bottom: 0;
+}
+
+/* Search Overlay */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.search-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    transition: color var(--transition-fast);
+}
+
+.search-close:hover {
+    color: var(--primary-color);
+}
+
+.search-overlay-inner {
+    width: 100%;
+    max-width: 600px;
+    padding: 0 var(--spacing-sm);
+}
+
+.search-form {
+    position: relative;
+    margin-bottom: var(--spacing-md);
+}
+
+.search-form input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    border: none;
+    border-bottom: 2px solid var(--text-dark);
+    background-color: transparent;
+    font-size: 1.25rem;
+}
+
+.search-form button {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    transition: color var(--transition-fast);
+}
+
+.search-form button:hover {
+    color: var(--primary-color);
+}
+
+.search-suggestions h3 {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.25rem;
+}
+
+.suggestion-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.tag {
+    padding: 0.5rem 1rem;
+    background-color: var(--light-bg);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    transition: all var(--transition-fast);
+}
+
+.tag:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* ===== 6. Footer ===== */
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: var(--spacing-lg) 0 var(--spacing-sm);
+}
+
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-logo {
+    flex: 0 0 25%;
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-logo h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: 2px;
+}
+
+.footer-logo p {
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+.footer-nav {
+    flex: 0 0 75%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-nav-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-nav-column h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    padding-bottom: var(--spacing-xs);
+}
+
+.footer-nav-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-nav-column ul li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-nav-column ul li a {
+    color: var(--text-light);
+    transition: color var(--transition-fast);
+}
+
+.footer-nav-column ul li a:hover {
+    color: var(--primary-color);
+}
+
+.contact-info li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-light);
+}
+
+.contact-info li i {
+    margin-right: var(--spacing-xs);
+    margin-top: 5px;
+}
+
+.phone-link:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+    background-color: var(--primary-color);
+}
+
+.payment-methods img {
+    height: 24px;
+}
+
+/* ===== 7. Buttons & Forms ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: 1px solid var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--text-dark);
+    border-color: var(--text-dark);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--text-dark);
+}
+
+.btn-outline:hover {
+    background-color: var(--text-dark);
+    color: var(--white);
+}
+
+.btn-text {
+    padding: 0;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: none;
+}
+
+.btn-text:hover {
+    color: var(--primary-dark);
+}
+
+.btn-text i {
+    margin-left: 0.5rem;
+    transition: transform var(--transition-fast);
+}
+
+.btn-text:hover i {
+    transform: translateX(5px);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--white);
+    transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+}
+
+.checkbox-group input {
+    margin-right: var(--spacing-xs);
+    width: auto;
+    margin-top: 5px;
+}
+
+.form-message {
+    margin-top: var(--spacing-sm);
+    font-size: 0.875rem;
+}
+
+.form-message.success {
+    color: var(--success);
+}
+
+.form-message.error {
+    color: var(--error);
+}
+
+/* ===== 8. Components ===== */
+/* Page Header */
+.page-header {
+    background-color: var(--light-bg);
+    padding: calc(80px + var(--spacing-lg)) 0 var(--spacing-lg);
+    text-align: center;
+}
+
+.page-title {
+    margin-bottom: var(--spacing-xs);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+.breadcrumb a {
+    color: var(--text-medium);
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+}
+
+.breadcrumb .separator {
+    margin: 0 var(--spacing-xs);
+}
+
+.breadcrumb .current {
+    color: var(--primary-color);
+}
+
+/* Back to Top */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+    z-index: var(--z-tooltip);
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.loader svg {
+    width: 100%;
+    height: 100%;
+}
+
+#loader-circle {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 2;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash 2s linear infinite;
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 200;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -200;
+    }
+}
+
+.loader-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 2px;
+}
+
+/* Custom Cursor */
+.cursor {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: var(--z-modal);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.cursor-follower {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: var(--z-modal);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+body:hover .cursor,
+body:hover .cursor-follower {
+    opacity: 1;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    transform: translateY(20px);
+    transition: transform var(--transition-normal);
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    transition: color var(--transition-fast);
+}
+
+.modal-close:hover {
+    color: var(--primary-color);
+}
+
+.modal-header {
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-header h3 {
+    margin-bottom: 0;
+}
+
+/* Quick Contact */
+.quick-contact {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: var(--z-fixed);
+}
+
+.quick-contact-toggle {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: background-color var(--transition-fast);
+}
+
+.quick-contact-toggle:hover {
+    background-color: var(--primary-dark);
+}
+
+.quick-contact-panel {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 300px;
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--transition-normal);
+}
+
+.quick-contact.active .quick-contact-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.quick-contact-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-sm);
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.quick-contact-header h3 {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+}
+
+.quick-contact-close {
+    color: var(--white);
+    font-size: 1.25rem;
+}
+
+.quick-contact-body {
+    padding: var(--spacing-sm);
+}
+
+.contact-options {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    background-color: var(--light-bg);
+    transition: all var(--transition-fast);
+}
+
+.contact-option i {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.contact-option span {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.contact-option:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.quick-message-form {
+    display: none;
+}
+
+.quick-message-form.active {
+    display: block;
+}
+
+/* Cart Notification */
+.cart-notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--success);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    z-index: var(--z-tooltip);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all var(--transition-normal);
+}
+
+.cart-notification.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+}
+
+.notification-content i {
+    margin-right: var(--spacing-xs);
+}
+
+/* ===== 9. Sections ===== */
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+.hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hero-slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.1);
+    transition: transform 6s ease;
+}
+
+.hero-slide.active .hero-slide-bg {
+    transform: scale(1);
+}
+
+.hero-slide-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    max-width: 600px;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+}
+
+.slide-subtitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-normal) 0.3s;
+}
+
+.slide-title {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-sm);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-normal) 0.5s;
+}
+
+.slide-description {
+    margin-bottom: var(--spacing-md);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-normal) 0.7s;
+}
+
+.slide-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-normal) 0.9s;
+}
+
+.hero-slide.active .slide-subtitle,
+.hero-slide.active .slide-title,
+.hero-slide.active .slide-description,
+.hero-slide.active .slide-buttons {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-controls {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.hero-prev,
+.hero-next {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-fast);
+}
+
+.hero-prev:hover,
+.hero-next:hover {
+    background-color: var(--primary-color);
+}
+
+.hero-dots {
+    display: flex;
+    align-items: center;
+    margin: 0 var(--spacing-sm);
+}
+
+.hero-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 0 5px;
+    transition: all var(--transition-fast);
+}
+
+.hero-dot.active {
+    background-color: var(--white);
+    transform: scale(1.2);
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down span {
+    font-size: 0.75rem;
+    margin-bottom: var(--spacing-xs);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 2px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Featured Categories */
+.featured-categories {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-title {
+    margin-bottom: var(--spacing-xs);
+}
+
+.section-subtitle {
+    color: var(--text-medium);
+    font-size: 1.125rem;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.category-card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.category-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.category-card:hover .category-image img {
+    transform: scale(1.1);
+}
+
+.category-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--spacing-sm);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: var(--white);
+}
+
+.category-content h3 {
+    margin-bottom: 5px;
+    font-size: 1.25rem;
+}
+
+.category-count {
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+/* Featured Artworks */
+.featured-artworks {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--light-bg);
+}
+
+.artwork-slider {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+}
+
+.artwork-slider-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xs);
+}
+
+.artwork-slider-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.artwork-slide {
+    flex: 0 0 calc(33.333% - var(--spacing-md) * 2/3);
+    scroll-snap-align: start;
+}
+
+.artwork-card {
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.artwork-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.artwork-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.artwork-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.artwork-card:hover .artwork-image img {
+    transform: scale(1.1);
+}
+
+.artwork-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.artwork-card:hover .artwork-overlay {
+    opacity: 1;
+}
+
+.overlay-btn {
+    width: 40px;
+    height: 40px;
+    background-color: var(--white);
+    color: var(--text-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(20px);
+    transition: all var(--transition-normal);
+}
+
+.artwork-card:hover .overlay-btn {
+    transform: translateY(0);
+}
+
+.overlay-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.artwork-info {
+    padding: var(--spacing-sm);
+}
+
+.artwork-title {
+    font-size: 1.125rem;
+    margin-bottom: 5px;
+}
+
+.artwork-artist {
+    color: var(--text-medium);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.artwork-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.artwork-category {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    background-color: var(--light-bg);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+}
+
+.artwork-price {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.artwork-slider-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 -15px;
+    pointer-events: none;
+}
+
+.artwork-prev,
+.artwork-next {
+    width: 40px;
+    height: 40px;
+    background-color: var(--white);
+    color: var(--text-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    pointer-events: auto;
+    transition: all var(--transition-fast);
+}
+
+.artwork-prev {
+    margin-left: -20px;
+}
+
+.artwork-next {
+    margin-right: -20px;
+}
+
+.artwork-prev:hover,
+.artwork-next:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Featured Artists */
+.featured-artists {
+    padding: var(--spacing-xl) 0;
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.artist-card {
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.artist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.artist-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.artist-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.artist-card:hover .artist-image img {
+    transform: scale(1.1);
+}
+
+.artist-info {
+    padding: var(--spacing-md);
+}
+
+.artist-name {
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+}
+
+.artist-specialty {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.artist-bio {
+    color: var(--text-medium);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Exhibitions Section */
+.exhibitions-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--light-bg);
+}
+
+.exhibitions-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.exhibition-card {
+    display: flex;
+    margin-bottom: var(--spacing-md);
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.exhibition-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.exhibition-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-sm);
+    text-align: center;
+}
+
+.exhibition-date .month {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.exhibition-date .day {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 5px 0;
+}
+
+.exhibition-date .year {
+    font-size: 1rem;
+}
+
+.exhibition-content {
+    flex: 1;
+    padding: var(--spacing-md);
+}
+
+.exhibition-title {
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+}
+
+.exhibition-location {
+    color: var(--text-medium);
+    margin-bottom: var(--spacing-xs);
+}
+
+.exhibition-location i {
+    margin-right: 5px;
+    color: var(--primary-color);
+}
+
+.exhibition-description {
+    color: var(--text-medium);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.exhibition-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.testimonials-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonials-wrapper {
+    position: relative;
+    height: 300px;
+}
+
+.testimonial-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.testimonial-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.testimonial-content {
+    background-color: var(--light-bg);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.testimonial-quote {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.testimonial-quote i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.testimonial-quote p {
+    font-style: italic;
+    color: var(--text-medium);
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: var(--spacing-sm);
+}
+
+.author-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    margin-bottom: 5px;
+    font-size: 1.125rem;
+}
+
+.author-info p {
+    color: var(--text-medium);
+    font-size: 0.875rem;
+    margin-bottom: 0;
+}
+
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-md);
+}
+
+.testimonial-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--text-light);
+    margin: 0 5px;
+    transition: all var(--transition-fast);
+}
+
+.testimonial-dot.active {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* Blog Section */
+.blog-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--light-bg);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.blog-card {
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.blog-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.blog-card:hover .blog-image img {
+    transform: scale(1.1);
+}
+
+.blog-date {
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.blog-date .day {
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: block;
+}
+
+.blog-date .month {
+    font-size: 0.875rem;
+}
+
+.blog-content {
+    padding: var(--spacing-md);
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--text-medium);
+}
+
+.blog-title {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.blog-excerpt {
+    color: var(--text-medium);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    padding: var(--spacing-lg) 0;
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.newsletter-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.newsletter-content {
+    flex: 0 0 40%;
+}
+
+.newsletter-content h2 {
+    margin-bottom: var(--spacing-xs);
+}
+
+.newsletter-content p {
+    opacity: 0.8;
+    margin-bottom: 0;
+}
+
+.newsletter-form {
+    flex: 0 0 50%;
+}
+
+.newsletter-form .form-group {
+    display: flex;
+    margin-bottom: 0;
+}
+
+.newsletter-form input {
+    flex: 1;
+    border: none;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    padding: 1rem;
+}
+
+.newsletter-form button {
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.newsletter-form button:hover {
+    background-color: var(--text-dark);
+    border-color: var(--text-dark);
+}
+
+/* Instagram Section */
+.instagram-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--spacing-xs);
+}
+
+.instagram-item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.instagram-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.instagram-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.instagram-item:hover img {
+    transform: scale(1.1);
+}
+
+.instagram-item:hover .instagram-overlay {
+    opacity: 1;
+}
+
+.instagram-overlay i {
+    color: var(--white);
+    font-size: 1.5rem;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.contact-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+.info-card {
+    background-color: var(--light-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+.info-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-sm);
+    font-size: 1.5rem;
+}
+
+.info-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.info-card p {
+    margin-bottom: var(--spacing-xs);
+}
+
+.info-note {
+    font-size: 0.75rem;
+    color: var(--text-medium);
+}
+
+.contact-form-container {
+    background-color: var(--light-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+}
+
+.contact-form-container h3 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Map Section */
+.map-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--light-bg);
+}
+
+.map-container {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.map-container iframe {
+    display: block;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--light-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-question h3 {
+    margin-bottom: 0;
+    font-size: 1.125rem;
+}
+
+.faq-toggle i {
+    transition: transform var(--transition-fast);
+}
+
+.faq-item.active .faq-toggle i {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 var(--spacing-md);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-normal), padding var(--transition-normal);
+}
+
+.faq-item.active .faq-answer {
+    padding: var(--spacing-md);
+    max-height: 500px;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: var(--spacing-lg) 0;
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    margin-bottom: var(--spacing-xs);
+}
+
+.cta-content p {
+    opacity: 0.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.cta-buttons .btn-outline {
+    border-color: var(--white);
+    color: var(--white);
+}
+
+.cta-buttons .btn-outline:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+
+/* ===== 10. Utilities ===== */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.gap-sm {
+    gap: var(--spacing-sm);
+}
+
+.gap-md {
+    gap: var(--spacing-md);
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mb-1 {
+    margin-bottom: var(--spacing-xs);
+}
+
+.mb-2 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.mb-3 {
+    margin-bottom: var(--spacing-md);
+}
+
+.mb-4 {
+    margin-bottom: var(--spacing-lg);
+}
+
+.mb-5 {
+    margin-bottom: var(--spacing-xl);
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.mt-1 {
+    margin-top: var(--spacing-xs);
+}
+
+.mt-2 {
+    margin-top: var(--spacing-sm);
+}
+
+.mt-3 {
+    margin-top: var(--spacing-md);
+}
+
+.mt-4 {
+    margin-top: var(--spacing-lg);
+}
+
+.mt-5 {
+    margin-top: var(--spacing-xl);
+}
+
+/* ===== 11. Responsive Styles ===== */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .categories-grid,
+    .instagram-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .artwork-slide {
+        flex: 0 0 calc(50% - var(--spacing-md) * 1/2);
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    :root {
+        --h1-size: 3rem;
+        --h2-size: 2.25rem;
+        --h3-size: 1.5rem;
+    }
+    
+    .main-nav {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .categories-grid,
+    .blog-grid,
+    .artists-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .instagram-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .artwork-slide {
+        flex: 0 0 calc(50% - var(--spacing-md) * 1/2);
+    }
+    
+    .newsletter-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .newsletter-content {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .newsletter-form {
+        width: 100%;
+    }
+    
+    .contact-grid,
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-top {
+        flex-direction: column;
+    }
+    
+    .footer-logo {
+        margin-bottom: var(--spacing-md);
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    :root {
+        --h1-size: 2.5rem;
+        --h2-size: 2rem;
+        --h3-size: 1.25rem;
+    }
+    
+    .categories-grid,
+    .blog-grid,
+    .artists-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .artwork-slide {
+        flex: 0 0 100%;
+    }
+    
+    .hero-slide-content {
+        left: 5%;
+        right: 5%;
+        text-align: center;
+    }
+    
+    .slide-buttons {
+        justify-content: center;
+    }
+    
+    .exhibition-card {
+        flex-direction: column;
+    }
+    
+    .exhibition-date {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+    .exhibition-date .month,
+    .exhibition-date .day,
+    .exhibition-date .year {
+        margin: 0 5px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --h1-size: 2rem;
+        --h2-size: 1.75rem;
+        --h3-size: 1.25rem;
+    }
+    
+    .instagram-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-controls {
+        display: none;
+    }
+    
+    .scroll-down {
+        display: none;
+    }
+    
+    .newsletter-form .form-group {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        border-radius: var(--radius-sm);
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .newsletter-form button {
+        border-radius: var(--radius-sm);
+        width: 100%;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .quick-contact {
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .quick-contact-panel {
+        width: 280px;
+    }
+}
+</style>
+  <style>/**
+ * Sunu Artt - Animations Stylesheet
+ * 
+ * Table of Contents:
+ * 1. Keyframes
+ * 2. Transitions
+ * 3. Hover Effects
+ * 4. Page Transitions
+ * 5. Loading Animations
+ */
+
+/* ===== 1. Keyframes ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomOut {
+    from {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 200;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -200;
+    }
+}
+
+/* ===== 2. Transitions ===== */
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+.slide-up {
+    animation: slideInUp 0.5s ease forwards;
+}
+
+.slide-down {
+    animation: slideInDown 0.5s ease forwards;
+}
+
+.slide-left {
+    animation: slideInLeft 0.5s ease forwards;
+}
+
+.slide-right {
+    animation: slideInRight 0.5s ease forwards;
+}
+
+.zoom-in {
+    animation: zoomIn 0.5s ease forwards;
+}
+
+.zoom-out {
+    animation: zoomOut 0.5s ease forwards;
+}
+
+/* Delay classes */
+.delay-100 {
+    animation-delay: 0.1s;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-300 {
+    animation-delay: 0.3s;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+}
+
+.delay-500 {
+    animation-delay: 0.5s;
+}
+
+/* ===== 3. Hover Effects ===== */
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-rotate {
+    transition: transform 0.3s ease;
+}
+
+.hover-rotate:hover {
+    transform: rotate(5deg);
+}
+
+.hover-shadow {
+    transition: box-shadow 0.3s ease;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hover-bright {
+    transition: filter 0.3s ease;
+}
+
+.hover-bright:hover {
+    filter: brightness(1.1);
+}
+
+/* ===== 4. Page Transitions ===== */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    z-index: 9999;
+    pointer-events: none;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+}
+
+.page-transition.active {
+    transform: translateY(0);
+}
+
+.page-transition.exit {
+    transform: translateY(-100%);
+}
+
+/* ===== 5. Loading Animations ===== */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s linear infinite;
+}
+
+.loading-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-dots span {
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Custom cursor animations */
+.cursor {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cursor-follower {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9998;
+    opacity: 0;
+    transition: transform 0.1s ease, opacity 0.3s ease;
+}
+
+body:hover .cursor,
+body:hover .cursor-follower {
+    opacity: 1;
+}
+
+.cursor.active {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+}
+
+.cursor-follower.active {
+    transform: translate(-50%, -50%) scale(0.5);
+    background-color: var(--primary-color);
+    opacity: 0.5;
+}
+
+/* Link hover effects */
+a:hover ~ .cursor {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+}
+
+a:hover ~ .cursor-follower {
+    transform: translate(-50%, -50%) scale(0.5);
+    background-color: var(--primary-color);
+    opacity: 0.5;
+}
+
+/* Button hover effects */
+button:hover ~ .cursor {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+}
+
+button:hover ~ .cursor-follower {
+    transform: translate(-50%, -50%) scale(0.5);
+    background-color: var(--primary-color);
+    opacity: 0.5;
+}
+
+/* Image hover effects */
+.artwork-image {
+    overflow: hidden;
+}
+
+.artwork-image img {
+    transition: transform 0.5s ease;
+}
+
+.artwork-card:hover .artwork-image img {
+    transform: scale(1.1);
+}
+
+.artwork-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.artwork-card:hover .artwork-overlay {
+    opacity: 1;
+}
+
+.overlay-btn {
+    transform: translateY(20px);
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.artwork-card:hover .overlay-btn {
+    transform: translateY(0);
+}
+
+/* Hero slider animations */
+.hero-slide {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hero-slide-bg {
+    transform: scale(1.1);
+    transition: transform 6s ease;
+}
+
+.hero-slide.active .hero-slide-bg {
+    transform: scale(1);
+}
+
+.slide-subtitle,
+.slide-title,
+.slide-description,
+.slide-buttons {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.slide-subtitle {
+    transition-delay: 0.3s;
+}
+
+.slide-title {
+    transition-delay: 0.5s;
+}
+
+.slide-description {
+    transition-delay: 0.7s;
+}
+
+.slide-buttons {
+    transition-delay: 0.9s;
+}
+
+.hero-slide.active .slide-subtitle,
+.hero-slide.active .slide-title,
+.hero-slide.active .slide-description,
+.hero-slide.active .slide-buttons {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Testimonial slider animations */
+.testimonial-slide {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.testimonial-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* FAQ animations */
+.faq-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle i {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: var(--spacing-md);
+}
+
+/* Mobile menu animations */
+.menu-toggle span {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-menu {
+    right: -100%;
+    transition: right 0.5s ease;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+/* Search overlay animations */
+.search-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.search-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Back to top animations */
+.back-to-top {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Quick contact animations */
+.quick-contact-panel {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.quick-contact.active .quick-contact-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Cart notification animations */
+.cart-notification {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.cart-notification.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Scroll animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Staggered animations */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.stagger-item.active {
+    animation: slideInUp 0.5s ease forwards;
+}
+
+.stagger-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.stagger-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.stagger-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.stagger-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.stagger-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.stagger-item:nth-child(6) {
+    animation-delay: 0.6s;
+}</style>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <circle id="loader-circle" cx="40" cy="40" r="32"></circle>
+            </svg>
+            <div class="loader-text">SUNU ARTT</div>
+        </div>
+    </div>
+
+    <!-- Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>SUNU ARTT</h1>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                        <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="search-toggle">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-menu-header">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>SUNU ARTT</h1>
+                    </a>
+                </div>
+                <button class="menu-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link active">Home</a></li>
+                    <li class="mobile-nav-item"><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
+                    <li class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+                    <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-footer">
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+                <p>© 2023 Sunu Artt. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay">
+        <button class="search-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="search-overlay-inner">
+            <form class="search-form">
+                <input type="text" placeholder="Search for artwork, artists, exhibitions...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <div class="search-suggestions">
+                <h3>Popular Searches</h3>
+                <div class="suggestion-tags">
+                    <a href="#" class="tag">Abstract</a>
+                    <a href="#" class="tag">Portraits</a>
+                    <a href="#" class="tag">Landscapes</a>
+                    <a href="#" class="tag">Modern Art</a>
+                    <a href="#" class="tag">Sculptures</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-slider">
+            <div class="hero-slide active" data-index="0">
+                <div class="hero-slide-bg" style="background-image: url('images/hero-1.jpg')"></div>
+                <div class="hero-slide-content">
+                    <h2 class="slide-subtitle">Featured Collection</h2>
+                    <h1 class="slide-title">Abstract Expressions</h1>
+                    <p class="slide-description">Explore the vibrant world of abstract art through our curated collection of contemporary masterpieces.</p>
+                    <div class="slide-buttons">
+                        <a href="gallery.html" class="btn btn-primary">Explore Collection</a>
+                        <a href="#featured" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-slide" data-index="1">
+                <div class="hero-slide-bg" style="background-image: url('images/hero-2.jpg')"></div>
+                <div class="hero-slide-content">
+                    <h2 class="slide-subtitle">New Exhibition</h2>
+                    <h1 class="slide-title">Urban Perspectives</h1>
+                    <p class="slide-description">A stunning showcase of urban landscapes and city life through the eyes of contemporary artists.</p>
+                    <div class="slide-buttons">
+                        <a href="exhibitions.html" class="btn btn-primary">View Exhibition</a>
+                        <a href="#exhibitions" class="btn btn-outline">See Schedule</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-slide" data-index="2">
+                <div class="hero-slide-bg" style="background-image: url('images/hero-3.jpg')"></div>
+                <div class="hero-slide-content">
+                    <h2 class="slide-subtitle">Limited Edition</h2>
+                    <h1 class="slide-title">Nature's Canvas</h1>
+                    <p class="slide-description">Breathtaking natural landscapes captured in various mediums by our most talented artists.</p>
+                    <div class="slide-buttons">
+                        <a href="gallery.html" class="btn btn-primary">Shop Collection</a>
+                        <a href="#featured-artists" class="btn btn-outline">Meet the Artists</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-controls">
+            <button class="hero-prev"><i class="fas fa-chevron-left"></i></button>
+            <div class="hero-dots">
+                <button class="hero-dot active" data-index="0"></button>
+                <button class="hero-dot" data-index="1"></button>
+                <button class="hero-dot" data-index="2"></button>
+            </div>
+            <button class="hero-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="scroll-down">
+            <span>Scroll Down</span>
+            <i class="fas fa-arrow-down"></i>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="featured-categories" id="featured">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Browse by Category</h2>
+                <p class="section-subtitle">Discover artwork that speaks to you</p>
+            </div>
+            <div class="categories-grid">
+                <a href="gallery.html?category=paintings" class="category-card">
+                    <div class="category-image">
+                        <img src="images/category-paintings.jpg" alt="Paintings">
+                    </div>
+                    <div class="category-content">
+                        <h3>Paintings</h3>
+                        <span class="category-count">124 Artworks</span>
+                    </div>
+                </a>
+                <a href="gallery.html?category=sculptures" class="category-card">
+                    <div class="category-image">
+                        <img src="images/category-sculptures.jpg" alt="Sculptures">
+                    </div>
+                    <div class="category-content">
+                        <h3>Sculptures</h3>
+                        <span class="category-count">87 Artworks</span>
+                    </div>
+                </a>
+                <a href="gallery.html?category=photography" class="category-card">
+                    <div class="category-image">
+                        <img src="images/category-photography.jpg" alt="Photography">
+                    </div>
+                    <div class="category-content">
+                        <h3>Photography</h3>
+                        <span class="category-count">93 Artworks</span>
+                    </div>
+                </a>
+                <a href="gallery.html?category=digital" class="category-card">
+                    <div class="category-image">
+                        <img src="images/category-digital.jpg" alt="Digital Art">
+                    </div>
+                    <div class="category-content">
+                        <h3>Digital Art</h3>
+                        <span class="category-count">76 Artworks</span>
+                    </div>
+                </a>
+            </div>
+            <div class="text-center">
+                <a href="gallery.html" class="btn btn-secondary">View All Categories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Artworks -->
+    <section class="featured-artworks">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Artworks</h2>
+                <p class="section-subtitle">Handpicked selections from our collection</p>
+            </div>
+            <div class="artwork-slider">
+                <div class="artwork-slider-wrapper">
+                    <div class="artwork-slide">
+                        <div class="artwork-card">
+                            <div class="artwork-image">
+                                <img src="c:\Users\Admin\Desktop\viber_image_2025-03-21_11-06-51-472.jpg" alt="Colorful Abstraction">
+                                <div class="artwork-overlay">
+                                    <a href="artwork-details.html?id=1" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                                    <button class="overlay-btn add-to-cart" data-id="1"><i class="fas fa-shopping-bag"></i></button>
+                                </div>
+                            </div>
+                            <div class="artwork-info">
+                                <h3 class="artwork-title">Durga Mata</h3>
+                                <p class="artwork-artist">by Sunita Dhital</p>
+                                <div class="artwork-meta">
+                                    <span class="artwork-category">Painting</span>
+                                    <span class="artwork-price">$1,200</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="artwork-slide">
+                        <div class="artwork-card">
+                            <div class="artwork-image">
+                                <img src="images/artwork-2.jpg" alt="Urban Landscape">
+                                <div class="artwork-overlay">
+                                    <a href="artwork-details.html?id=2" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                                    <button class="overlay-btn add-to-cart" data-id="2"><i class="fas fa-shopping-bag"></i></button>
+                                </div>
+                            </div>
+                            <div class="artwork-info">
+                                <h3 class="artwork-title">Urban Landscape</h3>
+                                <p class="artwork-artist">by David Chen</p>
+                                <div class="artwork-meta">
+                                    <span class="artwork-category">Photography</span>
+                                    <span class="artwork-price">$850</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="artwork-slide">
+                        <div class="artwork-card">
+                            <div class="artwork-image">
+                                <img src="images/artwork-3.jpg" alt="Bronze Elegance">
+                                <div class="artwork-overlay">
+                                    <a href="artwork-details.html?id=3" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                                    <button class="overlay-btn add-to-cart" data-id="3"><i class="fas fa-shopping-bag"></i></button>
+                                </div>
+                            </div>
+                            <div class="artwork-info">
+                                <h3 class="artwork-title">Bronze Elegance</h3>
+                                <p class="artwork-artist">by Sarah Williams</p>
+                                <div class="artwork-meta">
+                                    <span class="artwork-category">Sculpture</span>
+                                    <span class="artwork-price">$3,400</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="artwork-slide">
+                        <div class="artwork-card">
+                            <div class="artwork-image">
+                                <img src="images/artwork-4.jpg" alt="Digital Dreams">
+                                <div class="artwork-overlay">
+                                    <a href="artwork-details.html?id=4" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                                    <button class="overlay-btn add-to-cart" data-id="4"><i class="fas fa-shopping-bag"></i></button>
+                                </div>
+                            </div>
+                            <div class="artwork-info">
+                                <h3 class="artwork-title">Digital Dreams</h3>
+                                <p class="artwork-artist">by Alex Rivera</p>
+                                <div class="artwork-meta">
+                                    <span class="artwork-category">Digital Art</span>
+                                    <span class="artwork-price">$750</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="artwork-slide">
+                        <div class="artwork-card">
+                            <div class="artwork-image">
+                                <img src="images/artwork-5.jpg" alt="Serene Waters">
+                                <div class="artwork-overlay">
+                                    <a href="artwork-details.html?id=5" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                                    <button class="overlay-btn add-to-cart" data-id="5"><i class="fas fa-shopping-bag"></i></button>
+                                </div>
+                            </div>
+                            <div class="artwork-info">
+                                <h3 class="artwork-title">Serene Waters</h3>
+                                <p class="artwork-artist">by Emma Thompson</p>
+                                <div class="artwork-meta">
+                                    <span class="artwork-category">Painting</span>
+                                    <span class="artwork-price">$1,800</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="artwork-slide">
+                        <div class="artwork-card">
+                            <div class="artwork-image">
+                                <img src="images/artwork-6.jpg" alt="Geometric Harmony">
+                                <div class="artwork-overlay">
+                                    <a href="artwork-details.html?id=6" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                                    <button class="overlay-btn add-to-cart" data-id="6"><i class="fas fa-shopping-bag"></i></button>
+                                </div>
+                            </div>
+                            <div class="artwork-info">
+                                <h3 class="artwork-title">Geometric Harmony</h3>
+                                <p class="artwork-artist">by Michael Lee</p>
+                                <div class="artwork-meta">
+                                    <span class="artwork-category">Digital Art</span>
+                                    <span class="artwork-price">$950</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="artwork-slider-controls">
+                    <button class="artwork-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="artwork-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="gallery.html" class="btn btn-secondary">View All Artworks</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Artists -->
+    <section class="featured-artists" id="featured-artists">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Artists</h2>
+                <p class="section-subtitle">Meet the creative minds behind our collection</p>
+            </div>
+            <div class="artists-grid">
+                <div class="artist-card">
+                    <div class="artist-image">
+                        <img src="images/artist-1.jpg" alt="Maya Johnson">
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">Maya Johnson</h3>
+                        <p class="artist-specialty">Abstract Painter</p>
+                        <p class="artist-bio">Known for her vibrant use of color and emotional expression in abstract compositions.</p>
+                        <a href="artist-details.html?id=1" class="btn btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-image">
+                        <img src="images/artist-2.jpg" alt="David Chen">
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">David Chen</h3>
+                        <p class="artist-specialty">Urban Photographer</p>
+                        <p class="artist-bio">Captures the essence of city life through his lens, focusing on architecture and street scenes.</p>
+                        <a href="artist-details.html?id=2" class="btn btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-image">
+                        <img src="images/artist-3.jpg" alt="Sarah Williams">
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">Sarah Williams</h3>
+                        <p class="artist-specialty">Sculptor</p>
+                        <p class="artist-bio">Creates elegant bronze and marble sculptures inspired by human form and movement.</p>
+                        <a href="artist-details.html?id=3" class="btn btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="artists.html" class="btn btn-secondary">Meet All Artists</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Exhibitions -->
+    <section class="exhibitions-section" id="exhibitions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Exhibitions</h2>
+                <p class="section-subtitle">Mark your calendar for these inspiring events</p>
+            </div>
+            <div class="exhibitions-timeline">
+                <div class="exhibition-card">
+                    <div class="exhibition-date">
+                        <span class="month">JUN</span>
+                        <span class="day">15</span>
+                        <span class="year">2023</span>
+                    </div>
+                    <div class="exhibition-content">
+                        <h3 class="exhibition-title">Urban Perspectives</h3>
+                        <p class="exhibition-location"><i class="fas fa-map-marker-alt"></i> Main Gallery, Sunu Artt</p>
+                        <p class="exhibition-description">A stunning showcase of urban landscapes and city life through the eyes of contemporary artists.</p>
+                        <div class="exhibition-actions">
+                            <a href="exhibition-details.html?id=1" class="btn btn-outline btn-sm">Learn More</a>
+                            <button class="btn btn-primary btn-sm open-rsvp" data-exhibition="Urban Perspectives">RSVP</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="exhibition-card">
+                    <div class="exhibition-date">
+                        <span class="month">JUL</span>
+                        <span class="day">08</span>
+                        <span class="year">2023</span>
+                    </div>
+                    <div class="exhibition-content">
+                        <h3 class="exhibition-title">Nature's Canvas</h3>
+                        <p class="exhibition-location"><i class="fas fa-map-marker-alt"></i> East Wing, Sunu Artt</p>
+                        <p class="exhibition-description">Breathtaking natural landscapes captured in various mediums by our most talented artists.</p>
+                        <div class="exhibition-actions">
+                            <a href="exhibition-details.html?id=2" class="btn btn-outline btn-sm">Learn More</a>
+                            <button class="btn btn-primary btn-sm open-rsvp" data-exhibition="Nature's Canvas">RSVP</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="exhibition-card">
+                    <div class="exhibition-date">
+                        <span class="month">AUG</span>
+                        <span class="day">22</span>
+                        <span class="year">2023</span>
+                    </div>
+                    <div class="exhibition-content">
+                        <h3 class="exhibition-title">Abstract Expressions</h3>
+                        <p class="exhibition-location"><i class="fas fa-map-marker-alt"></i> West Gallery, Sunu Artt</p>
+                        <p class="exhibition-description">Explore the vibrant world of abstract art through our curated collection of contemporary masterpieces.</p>
+                        <div class="exhibition-actions">
+                            <a href="exhibition-details.html?id=3" class="btn btn-outline btn-sm">Learn More</a>
+                            <button class="btn btn-primary btn-sm open-rsvp" data-exhibition="Abstract Expressions">RSVP</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Hear from art enthusiasts and collectors</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonials-wrapper">
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote">
+                                <i class="fas fa-quote-left"></i>
+                                <p>Sunu Artt has transformed my home with their exquisite collection. The team's expertise in helping me select the perfect pieces was invaluable. I'm now a lifelong customer!</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="images/testimonial-1.jpg" alt="Emily Parker">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Emily Parker</h4>
+                                    <p>Art Collector</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote">
+                                <i class="fas fa-quote-left"></i>
+                                <p>As an interior designer, I rely on Sunu Artt for unique pieces that elevate my projects. Their curation is impeccable, and their customer service is second to none.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="images/testimonial-2.jpg" alt="James Wilson">
+                                </div>
+                                <div class="author-info">
+                                    <h4>James Wilson</h4>
+                                    <p>Interior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote">
+                                <i class="fas fa-quote-left"></i>
+                                <p>I purchased my first artwork from Sunu Artt and was amazed by the quality and attention to detail. The online ordering process was seamless, and the piece arrived perfectly packaged.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="images/testimonial-3.jpg" alt="Sophia Rodriguez">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Sophia Rodriguez</h4>
+                                    <p>First-time Buyer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-dots">
+                    <button class="testimonial-dot active" data-index="0"></button>
+                    <button class="testimonial-dot" data-index="1"></button>
+                    <button class="testimonial-dot" data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Art Blog -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Art Blog</h2>
+                <p class="section-subtitle">Insights, interviews, and inspiration</p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-1.jpg" alt="The Evolution of Abstract Art">
+                        <div class="blog-date">
+                            <span class="day">12</span>
+                            <span class="month">May</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Art History</span>
+                            <span class="blog-author">by Admin</span>
+                        </div>
+                        <h3 class="blog-title">The Evolution of Abstract Art</h3>
+                        <p class="blog-excerpt">Tracing the fascinating journey of abstract art from its early beginnings to contemporary expressions.</p>
+                        <a href="blog-details.html?id=1" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-2.jpg" alt="Interview with Maya Johnson">
+                        <div class="blog-date">
+                            <span class="day">28</span>
+                            <span class="month">Apr</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Artist Spotlight</span>
+                            <span class="blog-author">by Admin</span>
+                        </div>
+                        <h3 class="blog-title">Interview with Maya Johnson</h3>
+                        <p class="blog-excerpt">An in-depth conversation with abstract painter Maya Johnson about her creative process and inspirations.</p>
+                        <a href="blog-details.html?id=2" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-3.jpg" alt="Collecting Art: A Beginner's Guide">
+                        <div class="blog-date">
+                            <span class="day">15</span>
+                            <span class="month">Apr</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Collecting</span>
+                            <span class="blog-author">by Admin</span>
+                        </div>
+                        <h3 class="blog-title">Collecting Art: A Beginner's Guide</h3>
+                        <p class="blog-excerpt">Essential tips and advice for those looking to start their journey as art collectors.</p>
+                        <a href="blog-details.html?id=3" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+            <div class="text-center">
+                <a href="blog.html" class="btn btn-secondary">View All Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-inner">
+                <div class="newsletter-content">
+                    <h2>Stay Inspired</h2>
+                    <p>Subscribe to our newsletter for exhibition updates, new arrivals, and exclusive invitations.</p>
+                </div>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                    <div class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed -->
+    <section class="instagram-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Follow Us on Instagram</h2>
+                <p class="section-subtitle">@sunuartt</p>
+            </div>
+            <div class="instagram-grid">
+                <a href="#" class="instagram-item">
+                    <img src="images/insta-1.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                <a href="#" class="instagram-item">
+                    <img src="images/insta-2.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                <a href="#" class="instagram-item">
+                    <img src="images/insta-3.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                <a href="#" class="instagram-item">
+                    <img src="images/insta-4.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                <a href="#" class="instagram-item">
+                    <img src="images/insta-5.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                <a href="#" class="instagram-item">
+                    <img src="images/insta-6.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <h2>SUNU ARTT</h2>
+                    <p>Curating exceptional art for discerning collectors since 2010.</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-column">
+                        <h3>Explore</h3>
+                        <ul>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="artists.html">Artists</a></li>
+                            <li><a href="exhibitions.html">Exhibitions</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-column">
+                        <h3>Information</h3>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="shipping.html">Shipping & Returns</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Art Street, New York, NY 10001</li>
+                            <li><i class="fas fa-phone"></i> <a href="tel:+12125551234" class="phone-link">+1 (212) 555-1234</a></li>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:info@sunuartt.com">info@sunuartt.com</a></li>
+                            <li><i class="fas fa-clock"></i> Tue-Sun: 10am-6pm, Mon: Closed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2023 Sunu Artt. All rights reserved.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+                <div class="payment-methods">
+                    <img src="images/payment-methods.png" alt="Payment Methods">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- RSVP Modal -->
+    <div class="modal" id="rsvp-modal">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h3>RSVP for <span id="exhibition-title"></span></h3>
+            </div>
+            <div class="modal-body">
+                <form id="rsvp-form">
+                    <div class="form-group">
+                        <label for="rsvp-name">Your Name</label>
+                        <input type="text" id="rsvp-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rsvp-email">Email Address</label>
+                        <input type="email" id="rsvp-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rsvp-phone">Phone Number</label>
+                        <input type="tel" id="rsvp-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rsvp-guests">Number of Guests</label>
+                        <select id="rsvp-guests" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5+">5+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="rsvp-message">Special Requests (Optional)</label>
+                        <textarea id="rsvp-message" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit RSVP</button>
+                </form>
+                <div class="form-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Contact Modal -->
+    <div class="quick-contact">
+        <button class="quick-contact-toggle">
+            <i class="fas fa-comment"></i>
+        </button>
+        <div class="quick-contact-panel">
+            <div class="quick-contact-header">
+                <h3>Contact Us</h3>
+                <button class="quick-contact-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="quick-contact-body">
+                <div class="contact-options">
+                    <a href="tel:+12125551234" class="contact-option phone">
+                        <i class="fas fa-phone"></i>
+                        <span>Call Us</span>
+                    </a>
+                    <a href="mailto:info@sunuartt.com" class="contact-option email">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <button class="contact-option message open-message-form">
+                        <i class="fas fa-comment"></i>
+                        <span>Message</span>
+                    </button>
+                </div>
+                <div class="quick-message-form">
+                    <form id="quick-contact-form">
+                        <div class="form-group">
+                            <label for="quick-name">Your Name</label>
+                            <input type="text" id="quick-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quick-email">Email Address</label>
+                            <input type="email" id="quick-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quick-message">Message</label>
+                            <textarea id="quick-message" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                    <div class="form-message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add to Cart Notification -->
+    <div class="cart-notification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span>Item added to cart!</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>/**
+        * Sunu Artt - Main JavaScript
+        * 
+        * Table of Contents:
+        * 1. Preloader
+        * 2. Custom Cursor
+        * 3. Navigation & Mobile Menu
+        * 4. Search Overlay
+        * 5. Back to Top
+        * 6. Scroll Animations
+        * 7. Quick Contact
+        * 8. Modal Functionality
+        * 9. FAQ Accordion
+        * 10. Utility Functions
+        */
+       
+       // Wait for DOM to be fully loaded
+       document.addEventListener('DOMContentLoaded', function() {
+           // Initialize components
+           initPreloader();
+           initCustomCursor();
+           initNavigation();
+           initSearchOverlay();
+           initBackToTop();
+           initScrollAnimations();
+           initQuickContact();
+           initModals();
+           initFAQAccordion();
+       });
+       
+       /**
+        * 1. Preloader
+        */
+       function initPreloader() {
+           const preloader = document.querySelector('.preloader');
+           
+           if (!preloader) return;
+           
+           // Hide preloader after page is loaded
+           window.addEventListener('load', function() {
+               setTimeout(function() {
+                   preloader.classList.add('loaded');
+                   
+                   // Enable scrolling after preloader is hidden
+                   document.body.style.overflow = 'auto';
+               }, 500);
+           });
+           
+           // Disable scrolling while preloader is active
+           document.body.style.overflow = 'hidden';
+       }
+       
+       /**
+        * 2. Custom Cursor
+        */
+       function initCustomCursor() {
+           const cursor = document.querySelector('.cursor');
+           const cursorFollower = document.querySelector('.cursor-follower');
+           
+           if (!cursor || !cursorFollower) return;
+           
+           // Check if device is touch-enabled
+           if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+               cursor.style.display = 'none';
+               cursorFollower.style.display = 'none';
+               return;
+           }
+           
+           document.addEventListener('mousemove', function(e) {
+               cursor.style.left = e.clientX + 'px';
+               cursor.style.top = e.clientY + 'px';
+               
+               // Add slight delay to follower for smooth effect
+               setTimeout(function() {
+                   cursorFollower.style.left = e.clientX + 'px';
+                   cursorFollower.style.top = e.clientY + 'px';
+               }, 50);
+           });
+           
+           // Add active class on clickable elements
+           const clickables = document.querySelectorAll('a, button, input, textarea, select, .clickable');
+           
+           clickables.forEach(element => {
+               element.addEventListener('mouseenter', function() {
+                   cursor.classList.add('active');
+                   cursorFollower.classList.add('active');
+               });
+               
+               element.addEventListener('mouseleave', function() {
+                   cursor.classList.remove('active');
+                   cursorFollower.classList.remove('active');
+               });
+           });
+           
+           // Hide cursor when leaving window
+           document.addEventListener('mouseleave', function() {
+               cursor.style.opacity = '0';
+               cursorFollower.style.opacity = '0';
+           });
+           
+           document.addEventListener('mouseenter', function() {
+               cursor.style.opacity = '1';
+               cursorFollower.style.opacity = '1';
+           });
+       }
+       
+       /**
+        * 3. Navigation & Mobile Menu
+        */
+       function initNavigation() {
+           const header = document.querySelector('.header');
+           const menuToggle = document.querySelector('.menu-toggle');
+           const mobileMenu = document.querySelector('.mobile-menu');
+           const menuClose = document.querySelector('.menu-close');
+           
+           // Header scroll effect
+           window.addEventListener('scroll', function() {
+               if (window.scrollY > 50) {
+                   header.classList.add('scrolled');
+               } else {
+                   header.classList.remove('scrolled');
+               }
+           });
+           
+           // Mobile menu toggle
+           if (menuToggle && mobileMenu) {
+               menuToggle.addEventListener('click', function() {
+                   mobileMenu.classList.add('active');
+                   document.body.style.overflow = 'hidden';
+               });
+           }
+           
+           // Close mobile menu
+           if (menuClose && mobileMenu) {
+               menuClose.addEventListener('click', function() {
+                   mobileMenu.classList.remove('active');
+                   document.body.style.overflow = 'auto';
+               });
+           }
+           
+           // Close mobile menu when clicking outside
+           document.addEventListener('click', function(e) {
+               if (mobileMenu && mobileMenu.classList.contains('active')) {
+                   if (!mobileMenu.contains(e.target) && e.target !== menuToggle && !menuToggle.contains(e.target)) {
+                       mobileMenu.classList.remove('active');
+                       document.body.style.overflow = 'auto';
+                   }
+               }
+           });
+           
+           // Active link highlighting
+           const currentLocation = window.location.pathname;
+           const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+           
+           navLinks.forEach(link => {
+               const linkPath = link.getAttribute('href');
+               
+               if (currentLocation.includes(linkPath) && linkPath !== 'index.html') {
+                   link.classList.add('active');
+               } else if (currentLocation.endsWith('/') && linkPath === 'index.html') {
+                   link.classList.add('active');
+               }
+           });
+       }
+       
+       /**
+        * 4. Search Overlay
+        */
+       function initSearchOverlay() {
+           const searchToggle = document.querySelector('.search-toggle');
+           const searchOverlay = document.querySelector('.search-overlay');
+           const searchClose = document.querySelector('.search-close');
+           const searchForm = document.querySelector('.search-form');
+           
+           if (!searchToggle || !searchOverlay) return;
+           
+           // Open search overlay
+           searchToggle.addEventListener('click', function(e) {
+               e.preventDefault();
+               searchOverlay.classList.add('active');
+               document.body.style.overflow = 'hidden';
+               
+               // Focus on search input
+               setTimeout(function() {
+                   searchOverlay.querySelector('input').focus();
+               }, 300);
+           });
+           
+           // Close search overlay
+           if (searchClose) {
+               searchClose.addEventListener('click', function() {
+                   searchOverlay.classList.remove('active');
+                   document.body.style.overflow = 'auto';
+               });
+           }
+           
+           // Close search overlay on escape key
+           document.addEventListener('keydown', function(e) {
+               if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                   searchOverlay.classList.remove('active');
+                   document.body.style.overflow = 'auto';
+               }
+           });
+           
+           // Handle search form submission
+           if (searchForm) {
+               searchForm.addEventListener('submit', function(e) {
+                   e.preventDefault();
+                   const searchTerm = this.querySelector('input').value.trim();
+                   
+                   if (searchTerm) {
+                       // In a real application, you would redirect to search results page
+                       // For demo purposes, we'll just log the search term
+                       console.log('Searching for:', searchTerm);
+                       
+                       // Simulate search results page navigation
+                       alert(`Searching for: ${searchTerm}`);
+                       
+                       // Close search overlay
+                       searchOverlay.classList.remove('active');
+                       document.body.style.overflow = 'auto';
+                   }
+               });
+           }
+       }
+       
+       /**
+        * 5. Back to Top
+        */
+       function initBackToTop() {
+           const backToTop = document.querySelector('.back-to-top');
+           
+           if (!backToTop) return;
+           
+           // Show/hide back to top button based on scroll position
+           window.addEventListener('scroll', function() {
+               if (window.scrollY > 500) {
+                   backToTop.classList.add('active');
+               } else {
+                   backToTop.classList.remove('active');
+               }
+           });
+           
+           // Scroll to top when clicked
+           backToTop.addEventListener('click', function(e) {
+               e.preventDefault();
+               window.scrollTo({
+                   top: 0,
+                   behavior: 'smooth'
+               });
+           });
+       }
+       
+       /**
+        * 6. Scroll Animations
+        */
+       function initScrollAnimations() {
+           // Reveal elements on scroll
+           const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+           
+           function revealOnScroll() {
+               const windowHeight = window.innerHeight;
+               
+               revealElements.forEach(element => {
+                   const elementTop = element.getBoundingClientRect().top;
+                   const elementVisible = 150;
+                   
+                   if (elementTop < windowHeight - elementVisible) {
+                       element.classList.add('active');
+                   }
+               });
+           }
+           
+           // Initial check
+           revealOnScroll();
+           
+           // Check on scroll
+           window.addEventListener('scroll', revealOnScroll);
+           
+           // Staggered animations
+           const staggerContainers = document.querySelectorAll('.stagger-container');
+           
+           function staggerOnScroll() {
+               const windowHeight = window.innerHeight;
+               
+               staggerContainers.forEach(container => {
+                   const containerTop = container.getBoundingClientRect().top;
+                   const containerVisible = 150;
+                   
+                   if (containerTop < windowHeight - containerVisible) {
+                       const staggerItems = container.querySelectorAll('.stagger-item');
+                       
+                       staggerItems.forEach((item, index) => {
+                           setTimeout(() => {
+                               item.classList.add('active');
+                           }, 100 * index);
+                       });
+                   }
+               });
+           }
+           
+           // Initial check
+           staggerOnScroll();
+           
+           // Check on scroll
+           window.addEventListener('scroll', staggerOnScroll);
+       }
+       
+       /**
+        * 7. Quick Contact
+        */
+       function initQuickContact() {
+           const quickContact = document.querySelector('.quick-contact');
+           const quickContactToggle = document.querySelector('.quick-contact-toggle');
+           const quickContactClose = document.querySelector('.quick-contact-close');
+           const openMessageForm = document.querySelector('.open-message-form');
+           const quickMessageForm = document.querySelector('.quick-message-form');
+           const quickContactForm = document.getElementById('quick-contact-form');
+           
+           if (!quickContact || !quickContactToggle) return;
+           
+           // Toggle quick contact panel
+           quickContactToggle.addEventListener('click', function() {
+               quickContact.classList.toggle('active');
+           });
+           
+           // Close quick contact panel
+           if (quickContactClose) {
+               quickContactClose.addEventListener('click', function() {
+                   quickContact.classList.remove('active');
+               });
+           }
+           
+           // Open message form
+           if (openMessageForm && quickMessageForm) {
+               openMessageForm.addEventListener('click', function() {
+                   quickMessageForm.classList.add('active');
+               });
+           }
+           
+           // Handle quick contact form submission
+           if (quickContactForm) {
+               quickContactForm.addEventListener('submit', function(e) {
+                   e.preventDefault();
+                   const name = this.querySelector('#quick-name').value;
+                   const email = this.querySelector('#quick-email').value;
+                   const message = this.querySelector('#quick-message').value;
+                   const formMessage = this.querySelector('.form-message');
+                   
+                   // Simple validation
+                   if (!name || !email || !message) {
+                       formMessage.textContent = 'Please fill in all fields.';
+                       formMessage.classList.add('error');
+                       return;
+                   }
+                   
+                   if (!isValidEmail(email)) {
+                       formMessage.textContent = 'Please enter a valid email address.';
+                       formMessage.classList.add('error');
+                       return;
+                   }
+                   
+                   // In a real application, you would send this data to your server
+                   // For demo purposes, we'll just simulate a successful submission
+                   
+                   // Show loading state
+                   const submitBtn = this.querySelector('button[type="submit"]');
+                   const originalBtnText = submitBtn.innerHTML;
+                   submitBtn.innerHTML = 'Sending...';
+                   submitBtn.disabled = true;
+                   
+                   // Simulate API call
+                   setTimeout(function() {
+                       // Show success message
+                       formMessage.textContent = 'Your message has been sent successfully! We will get back to you soon.';
+                       formMessage.classList.remove('error');
+                       formMessage.classList.add('success');
+                       
+                       // Reset form
+                       quickContactForm.reset();
+                       
+                       // Reset button
+                       submitBtn.innerHTML = originalBtnText;
+                       submitBtn.disabled = false;
+                       
+                       // Close form after 3 seconds
+                       setTimeout(function() {
+                           quickMessageForm.classList.remove('active');
+                           
+                           // Clear success message after 5 seconds
+                           setTimeout(function() {
+                               formMessage.textContent = '';
+                               formMessage.classList.remove('success');
+                           }, 2000);
+                       }, 3000);
+                   }, 1500);
+               });
+           }
+       }
+       
+       /**
+        * 8. Modal Functionality
+        */
+       function initModals() {
+           const modalTriggers = document.querySelectorAll('[data-modal]');
+           const modals = document.querySelectorAll('.modal');
+           const modalCloses = document.querySelectorAll('.modal-close');
+           
+           // Open modal
+           modalTriggers.forEach(trigger => {
+               trigger.addEventListener('click', function() {
+                   const modalId = this.getAttribute('data-modal');
+                   const modal = document.getElementById(modalId);
+                   
+                   if (modal) {
+                       modal.classList.add('active');
+                       document.body.style.overflow = 'hidden';
+                   }
+               });
+           });
+           
+           // Close modal
+           modalCloses.forEach(close => {
+               close.addEventListener('click', function() {
+                   const modal = this.closest('.modal');
+                   
+                   if (modal) {
+                       modal.classList.remove('active');
+                       document.body.style.overflow = 'auto';
+                   }
+               });
+           });
+           
+           // Close modal when clicking outside
+           modals.forEach(modal => {
+               modal.addEventListener('click', function(e) {
+                   if (e.target === this) {
+                       this.classList.remove('active');
+                       document.body.style.overflow = 'auto';
+                   }
+               });
+           });
+           
+           // Close modal on escape key
+           document.addEventListener('keydown', function(e) {
+               if (e.key === 'Escape') {
+                   modals.forEach(modal => {
+                       if (modal.classList.contains('active')) {
+                           modal.classList.remove('active');
+                           document.body.style.overflow = 'auto';
+                       }
+                   });
+               }
+           });
+           
+           // RSVP Modal
+           const rsvpButtons = document.querySelectorAll('.open-rsvp');
+           const rsvpModal = document.getElementById('rsvp-modal');
+           const rsvpForm = document.getElementById('rsvp-form');
+           
+           if (rsvpButtons.length > 0 && rsvpModal) {
+               rsvpButtons.forEach(button => {
+                   button.addEventListener('click', function() {
+                       const exhibition = this.getAttribute('data-exhibition');
+                       const exhibitionTitle = document.getElementById('exhibition-title');
+                       
+                       if (exhibitionTitle) {
+                           exhibitionTitle.textContent = exhibition;
+                       }
+                       
+                       rsvpModal.classList.add('active');
+                       document.body.style.overflow = 'hidden';
+                   });
+               });
+           }
+           
+           // Handle RSVP form submission
+           if (rsvpForm) {
+               rsvpForm.addEventListener('submit', function(e) {
+                   e.preventDefault();
+                   const name = this.querySelector('#rsvp-name').value;
+                   const email = this.querySelector('#rsvp-email').value;
+                   const phone = this.querySelector('#rsvp-phone').value;
+                   const guests = this.querySelector('#rsvp-guests').value;
+                   const message = this.querySelector('#rsvp-message').value;
+                   const formMessage = rsvpModal.querySelector('.form-message');
+                   
+                   // Simple validation
+                   if (!name || !email || !phone) {
+                       formMessage.textContent = 'Please fill in all required fields.';
+                       formMessage.classList.add('error');
+                       return;
+                   }
+                   
+                   if (!isValidEmail(email)) {
+                       formMessage.textContent = 'Please enter a valid email address.';
+                       formMessage.classList.add('error');
+                       return;
+                   }
+                   
+                   // In a real application, you would send this data to your server
+                   // For demo purposes, we'll just simulate a successful submission
+                   
+                   // Show loading state
+                   const submitBtn = this.querySelector('button[type="submit"]');
+                   const originalBtnText = submitBtn.innerHTML;
+                   submitBtn.innerHTML = 'Submitting...';
+                   submitBtn.disabled = true;
+                   
+                   // Simulate API call
+                   setTimeout(function() {
+                       // Show success message
+                       formMessage.textContent = 'Your RSVP has been submitted successfully! We look forward to seeing you at the exhibition.';
+                       formMessage.classList.remove('error');
+                       formMessage.classList.add('success');
+                       
+                       // Reset form
+                       rsvpForm.reset();
+                       
+                       // Reset button
+                       submitBtn.innerHTML = originalBtnText;
+                       submitBtn.disabled = false;
+                       
+                       // Close modal after 3 seconds
+                       setTimeout(function() {
+                           rsvpModal.classList.remove('active');
+                           document.body.style.overflow = 'auto';
+                           
+                           // Clear success message after modal is closed
+                           setTimeout(function() {
+                               formMessage.textContent = '';
+                               formMessage.classList.remove('success');
+                           }, 500);
+                       }, 3000);
+                   }, 1500);
+               });
+           }
+       }
+       
+       /**
+        * 9. FAQ Accordion
+        */
+       function initFAQAccordion() {
+           const faqItems = document.querySelectorAll('.faq-item');
+           
+           if (faqItems.length === 0) return;
+           
+           faqItems.forEach(item => {
+               const question = item.querySelector('.faq-question');
+               
+               if (question) {
+                   question.addEventListener('click', function() {
+                       // Toggle current item
+                       item.classList.toggle('active');
+                       
+                       // Update toggle icon
+                       const toggleIcon = this.querySelector('.faq-toggle i');
+                       
+                       if (toggleIcon) {
+                           if (item.classList.contains('active')) {
+                               toggleIcon.className = 'fas fa-minus';
+                           } else {
+                               toggleIcon.className = 'fas fa-plus';
+                           }
+                       }
+                   });
+               }
+           });
+       }
+       
+       /**
+        * 10. Utility Functions
+        */
+       
+       // Validate email format
+       function isValidEmail(email) {
+           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+           return emailRegex.test(email);
+       }
+       
+       // Get URL parameters
+       function getUrlParameter(name) {
+           name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+           const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+           const results = regex.exec(location.search);
+           return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+       }
+       
+       // Format currency
+       function formatCurrency(amount) {
+           return '$' + parseFloat(amount).toFixed(2);
+       }
+       
+       // Debounce function to limit function calls
+       function debounce(func, wait, immediate) {
+           let timeout;
+           
+           return function() {
+               const context = this;
+               const args = arguments;
+               
+               const later = function() {
+                   timeout = null;
+                   if (!immediate) func.apply(context, args);
+               };
+               
+               const callNow = immediate && !timeout;
+               clearTimeout(timeout);
+               timeout = setTimeout(later, wait);
+               
+               if (callNow) func.apply(context, args);
+           };
+       }
+       
+       // Throttle function to limit function calls
+       function throttle(func, limit) {
+           let inThrottle;
+           
+           return function() {
+               const args = arguments;
+               const context = this;
+               
+               if (!inThrottle) {
+                   func.apply(context, args);
+                   inThrottle = true;
+                   setTimeout(() => inThrottle = false, limit);
+               }
+           };
+       }</script>
+    <script>/**
+        * Sunu Artt - Sliders JavaScript
+        * 
+        * Table of Contents:
+        * 1. Hero Slider
+        * 2. Artwork Slider
+        * 3. Testimonial Slider
+        */
+       
+       // Wait for DOM to be fully loaded
+       document.addEventListener('DOMContentLoaded', function() {
+           // Initialize sliders
+           initHeroSlider();
+           initArtworkSlider();
+           initTestimonialSlider();
+       });
+       
+       /**
+        * 1. Hero Slider
+        */
+       function initHeroSlider() {
+           const heroSlides = document.querySelectorAll('.hero-slide');
+           const heroDots = document.querySelectorAll('.hero-dot');
+           const heroPrev = document.querySelector('.hero-prev');
+           const heroNext = document.querySelector('.hero-next');
+           
+           if (heroSlides.length === 0) return;
+           
+           let currentSlide = 0;
+           let slideInterval;
+           
+           // Function to show a specific slide
+           function showSlide(index) {
+               // Hide all slides
+               heroSlides.forEach(slide => {
+                   slide.classList.remove('active');
+               });
+               
+               // Update dots
+               heroDots.forEach(dot => {
+                   dot.classList.remove('active');
+               });
+               
+               // Show the selected slide
+               heroSlides[index].classList.add('active');
+               heroDots[index].classList.add('active');
+               
+               // Update current slide index
+               currentSlide = index;
+           }
+           
+           // Function to show the next slide
+           function nextSlide() {
+               let next = currentSlide + 1;
+               
+               if (next >= heroSlides.length) {
+                   next = 0;
+               }
+               
+               showSlide(next);
+           }
+           
+           // Function to show the previous slide
+           function prevSlide() {
+               let prev = currentSlide - 1;
+               
+               if (prev < 0) {
+                   prev = heroSlides.length - 1;
+               }
+               
+               showSlide(prev);
+           }
+           
+           // Start automatic slideshow
+           function startSlideshow() {
+               slideInterval = setInterval(nextSlide, 6000);
+           }
+           
+           // Stop automatic slideshow
+           function stopSlideshow() {
+               clearInterval(slideInterval);
+           }
+           
+           // Event listeners for navigation
+           if (heroPrev) {
+               heroPrev.addEventListener('click', function() {
+                   prevSlide();
+                   stopSlideshow();
+                   startSlideshow();
+               });
+           }
+           
+           if (heroNext) {
+               heroNext.addEventListener('click', function() {
+                   nextSlide();
+                   stopSlideshow();
+                   startSlideshow();
+               });
+           }
+           
+           // Event listeners for dots
+           heroDots.forEach((dot, index) => {
+               dot.addEventListener('click', function() {
+                   showSlide(index);
+                   stopSlideshow();
+                   startSlideshow();
+               });
+           });
+           
+           // Pause slideshow on hover
+           const heroSlider = document.querySelector('.hero-slider');
+           
+           if (heroSlider) {
+               heroSlider.addEventListener('mouseenter', stopSlideshow);
+               heroSlider.addEventListener('mouseleave', startSlideshow);
+           }
+           
+           // Start the slideshow
+           startSlideshow();
+       }
+       
+       /**
+        * 2. Artwork Slider
+        */
+       function initArtworkSlider() {
+           const artworkSlider = document.querySelector('.artwork-slider-wrapper');
+           const artworkPrev = document.querySelector('.artwork-prev');
+           const artworkNext = document.querySelector('.artwork-next');
+           
+           if (!artworkSlider) return;
+           
+           const slideWidth = artworkSlider.querySelector('.artwork-slide').offsetWidth;
+           const slideMargin = parseInt(window.getComputedStyle(artworkSlider.querySelector('.artwork-slide')).marginRight);
+           const slideFullWidth = slideWidth + slideMargin;
+           
+           // Function to scroll to the next slide
+           function scrollNext() {
+               artworkSlider.scrollBy({
+                   left: slideFullWidth,
+                   behavior: 'smooth'
+               });
+           }
+           
+           // Function to scroll to the previous slide
+           function scrollPrev() {
+               artworkSlider.scrollBy({
+                   left: -slideFullWidth,
+                   behavior: 'smooth'
+               });
+           }
+           
+           // Event listeners for navigation
+           if (artworkPrev) {
+               artworkPrev.addEventListener('click', scrollPrev);
+           }
+           
+           if (artworkNext) {
+               artworkNext.addEventListener('click', scrollNext);
+           }
+           
+           // Handle touch events for mobile
+           let startX, endX;
+           
+           artworkSlider.addEventListener('touchstart', function(e) {
+               startX = e.touches[0].clientX;
+           });
+           
+           artworkSlider.addEventListener('touchend', function(e) {
+               endX = e.changedTouches[0].clientX;
+               
+               if (startX - endX > 50) {
+                   // Swipe left
+                   scrollNext();
+               } else if (endX - startX > 50) {
+                   // Swipe right
+                   scrollPrev();
+               }
+           });
+       }
+       
+       /**
+        * 3. Testimonial Slider
+        */
+       function initTestimonialSlider() {
+           const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+           const testimonialDots = document.querySelectorAll('.testimonial-dot');
+           
+           if (testimonialSlides.length === 0) return;
+           
+           let currentSlide = 0;
+           let slideInterval;
+           
+           // Function to show a specific slide
+           function showSlide(index) {
+               // Hide all slides
+               testimonialSlides.forEach(slide => {
+                   slide.classList.remove('active');
+               });
+               
+               // Update dots
+               testimonialDots.forEach(dot => {
+                   dot.classList.remove('active');
+               });
+               
+               // Show the selected slide
+               testimonialSlides[index].classList.add('active');
+               testimonialDots[index].classList.add('active');
+               
+               // Update current slide index
+               currentSlide = index;
+           }
+           
+           // Function to show the next slide
+           function nextSlide() {
+               let next = currentSlide + 1;
+               
+               if (next >= testimonialSlides.length) {
+                   next = 0;
+               }
+               
+               showSlide(next);
+           }
+           
+           // Start automatic slideshow
+           function startSlideshow() {
+               slideInterval = setInterval(nextSlide, 5000);
+           }
+           
+           // Stop automatic slideshow
+           function stopSlideshow() {
+               clearInterval(slideInterval);
+           }
+           
+           // Event listeners for dots
+           testimonialDots.forEach((dot, index) => {
+               dot.addEventListener('click', function() {
+                   showSlide(index);
+                   stopSlideshow();
+                   startSlideshow();
+               });
+           });
+           
+           // Pause slideshow on hover
+           const testimonialSlider = document.querySelector('.testimonials-slider');
+           
+           if (testimonialSlider) {
+               testimonialSlider.addEventListener('mouseenter', stopSlideshow);
+               testimonialSlider.addEventListener('mouseleave', startSlideshow);
+           }
+           
+           // Start the slideshow
+           startSlideshow();
+       }</script>
+    <script>/**
+        * Sunu Artt - Shopping Cart JavaScript
+        * 
+        * Table of Contents:
+        * 1. Cart Initialization
+        * 2. Cart Management
+        * 3. Cart UI Updates
+        * 4. Cart Notifications
+        */
+       
+       // Wait for DOM to be fully loaded
+       document.addEventListener('DOMContentLoaded', function() {
+           // Initialize cart
+           initCart();
+       });
+       
+       /**
+        * 1. Cart Initialization
+        */
+       function initCart() {
+           // Get cart elements
+           const cartCount = document.querySelector('.cart-count');
+           const addToCartButtons = document.querySelectorAll('.add-to-cart');
+           
+           // Load cart from localStorage
+           let cart = JSON.parse(localStorage.getItem('cart')) || [];
+           
+           // Update cart count
+           updateCartCount(cart);
+           
+           // Add event listeners to "Add to Cart" buttons
+           addToCartButtons.forEach(button => {
+               button.addEventListener('click', function() {
+                   const productId = parseInt(this.getAttribute('data-id'));
+                   
+                   // Get product details
+                   const productCard = this.closest('.artwork-card');
+                   
+                   if (productCard) {
+                       const productName = productCard.querySelector('.artwork-title').textContent;
+                       const productPrice = parseFloat(productCard.querySelector('.artwork-price').textContent.replace('$', ''));
+                       const productImage = productCard.querySelector('img').getAttribute('src');
+                       const productArtist = productCard.querySelector('.artwork-artist').textContent;
+                       const productCategory = productCard.querySelector('.artwork-category').textContent;
+                       
+                       // Create product object
+                       const product = {
+                           id: productId,
+                           name: productName,
+                           price: productPrice,
+                           image: productImage,
+                           artist: productArtist,
+                           category: productCategory,
+                           quantity: 1
+                       };
+                       
+                       // Add to cart
+                       addToCart(product);
+                       
+                       // Show notification
+                       showCartNotification(productName);
+                   }
+               });
+           });
+       }
+       
+       /**
+        * 2. Cart Management
+        */
+       
+       // Add product to cart
+       function addToCart(product) {
+           // Get current cart
+           let cart = JSON.parse(localStorage.getItem('cart')) || [];
+           
+           // Check if product already exists in cart
+           const existingProductIndex = cart.findIndex(item => item.id === product.id);
+           
+           if (existingProductIndex !== -1) {
+               // Increment quantity if product already exists
+               cart[existingProductIndex].quantity += 1;
+           } else {
+               // Add new product to cart
+               cart.push(product);
+           }
+           
+           // Save updated cart to localStorage
+           localStorage.setItem('cart', JSON.stringify(cart));
+           
+           // Update cart count
+           updateCartCount(cart);
+       }
+       
+       // Remove product from cart
+       function removeFromCart(productId) {
+           // Get current cart
+           let cart = JSON.parse(localStorage.getItem('cart')) || [];
+           
+           // Remove product from cart
+           cart = cart.filter(item => item.id !== productId);
+           
+           // Save updated cart to localStorage
+           localStorage.setItem('cart', JSON.stringify(cart));
+           
+           // Update cart count
+           updateCartCount(cart);
+           
+           // Update cart UI if on cart page
+           if (document.querySelector('.cart-items-container')) {
+               renderCartItems(cart);
+               updateCartTotal(cart);
+           }
+       }
+       
+       // Update product quantity in cart
+       function updateCartQuantity(productId, change) {
+           // Get current cart
+           let cart = JSON.parse(localStorage.getItem('cart')) || [];
+           
+           // Find product in cart
+           const productIndex = cart.findIndex(item => item.id === productId);
+           
+           if (productIndex !== -1) {
+               // Update quantity
+               cart[productIndex].quantity += change;
+               
+               // Remove product if quantity is 0 or less
+               if (cart[productIndex].quantity <= 0) {
+                   cart.splice(productIndex, 1);
+               }
+               
+               // Save updated cart to localStorage
+               localStorage.setItem('cart', JSON.stringify(cart));
+               
+               // Update cart count
+               updateCartCount(cart);
+               
+               // Update cart UI if on cart page
+               if (document.querySelector('.cart-items-container')) {
+                   renderCartItems(cart);
+                   updateCartTotal(cart);
+               }
+           }
+       }
+       
+       // Clear cart
+       function clearCart() {
+           // Clear cart in localStorage
+           localStorage.removeItem('cart');
+           
+           // Update cart count
+           updateCartCount([]);
+           
+           // Update cart UI if on cart page
+           if (document.querySelector('.cart-items-container')) {
+               renderCartItems([]);
+               updateCartTotal([]);
+           }
+       }
+       
+       /**
+        * 3. Cart UI Updates
+        */
+       
+       // Update cart count
+       function updateCartCount(cart) {
+           const cartCount = document.querySelector('.cart-count');
+           
+           if (cartCount) {
+               const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+               cartCount.textContent = totalItems;
+           }
+       }
+       
+       // Render cart items
+       function renderCartItems(cart) {
+           const cartItemsContainer = document.querySelector('.cart-items-container');
+           const emptyCartMessage = document.querySelector('.empty-cart-message');
+           
+           if (!cartItemsContainer) return;
+           
+           // Clear cart items container
+           cartItemsContainer.innerHTML = '';
+           
+           // Show empty cart message if cart is empty
+           if (cart.length === 0) {
+               if (emptyCartMessage) {
+                   emptyCartMessage.style.display = 'block';
+               }
+               
+               // Disable checkout button
+               const checkoutButton = document.querySelector('.checkout-btn');
+               
+               if (checkoutButton) {
+                   checkoutButton.disabled = true;
+               }
+               
+               return;
+           }
+           
+           // Hide empty cart message
+           if (emptyCartMessage) {
+               emptyCartMessage.style.display = 'none';
+           }
+           
+           // Enable checkout button
+           const checkoutButton = document.querySelector('.checkout-btn');
+           
+           if (checkoutButton) {
+               checkoutButton.disabled = false;
+           }
+           
+           // Render cart items
+           cart.forEach(item => {
+               const cartItem = document.createElement('div');
+               cartItem.className = 'cart-item';
+               
+               cartItem.innerHTML = `
+                   <div class="cart-item-image">
+                       <img src="${item.image}" alt="${item.name}">
+                   </div>
+                   <div class="cart-item-details">
+                       <h3 class="cart-item-title">${item.name}</h3>
+                       <p class="cart-item-artist">${item.artist}</p>
+                       <div class="cart-item-meta">
+                           <span class="cart-item-category">${item.category}</span>
+                           <span class="cart-item-price">$${item.price.toFixed(2)}</span>
+                       </div>
+                       <div class="cart-item-quantity">
+                           <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+                           <span>${item.quantity}</span>
+                           <button class="quantity-btn increase" data-id="${item.id}">+</button>
+                       </div>
+                   </div>
+                   <button class="remove-item" data-id="${item.id}">
+                       <i class="fas fa-times"></i>
+                   </button>
+               `;
+               
+               cartItemsContainer.appendChild(cartItem);
+           });
+           
+           // Add event listeners to cart item buttons
+           const decreaseButtons = document.querySelectorAll('.quantity-btn.decrease');
+           const increaseButtons = document.querySelectorAll('.quantity-btn.increase');
+           const removeButtons = document.querySelectorAll('.remove-item');
+           
+           decreaseButtons.forEach(button => {
+               button.addEventListener('click', function() {
+                   const productId = parseInt(this.getAttribute('data-id'));
+                   updateCartQuantity(productId, -1);
+               });
+           });
+           
+           increaseButtons.forEach(button => {
+               button.addEventListener('click', function() {
+                   const productId = parseInt(this.getAttribute('data-id'));
+                   updateCartQuantity(productId, 1);
+               });
+           });
+           
+           removeButtons.forEach(button => {
+               button.addEventListener('click', function() {
+                   const productId = parseInt(this.getAttribute('data-id'));
+                   removeFromCart(productId);
+               });
+           });
+       }
+       
+       // Update cart total
+       function updateCartTotal(cart) {
+           const subtotalElement = document.querySelector('.cart-subtotal');
+           const taxElement = document.querySelector('.cart-tax');
+           const totalElement = document.querySelector('.cart-total');
+           
+           if (!subtotalElement || !taxElement || !totalElement) return;
+           
+           // Calculate subtotal
+           const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+           
+           // Calculate tax (10%)
+           const tax = subtotal * 0.1;
+           
+           // Calculate total
+           const total = subtotal + tax;
+           
+           // Update UI
+           subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+           taxElement.textContent = `$${tax.toFixed(2)}`;
+           totalElement.textContent = `$${total.toFixed(2)}`;
+       }
+       
+       /**
+        * 4. Cart Notifications
+        */
+       
+       // Show cart notification
+       function showCartNotification(productName) {
+           const notification = document.querySelector('.cart-notification');
+           
+           if (!notification) return;
+           
+           // Update notification text
+           const notificationText = notification.querySelector('span');
+           
+           if (notificationText) {
+               notificationText.textContent = `${productName} added to cart!`;
+           }
+           
+           // Show notification
+           notification.classList.add('active');
+           
+           // Hide notification after 3 seconds
+           setTimeout(function() {
+               notification.classList.remove('active');
+           }, 3000);
+       }
+       
+       // Initialize cart page if on cart page
+       document.addEventListener('DOMContentLoaded', function() {
+           if (document.querySelector('.cart-page')) {
+               const cart = JSON.parse(localStorage.getItem('cart')) || [];
+               
+               renderCartItems(cart);
+               updateCartTotal(cart);
+               
+               // Clear cart button
+               const clearCartButton = document.querySelector('.clear-cart-btn');
+               
+               if (clearCartButton) {
+                   clearCartButton.addEventListener('click', function() {
+                       if (confirm('Are you sure you want to clear your cart?')) {
+                           clearCart();
+                       }
+                   });
+               }
+               
+               // Checkout button
+               const checkoutButton = document.querySelector('.checkout-btn');
+               
+               if (checkoutButton) {
+                   checkoutButton.addEventListener('click', function() {
+                       // In a real application, you would redirect to checkout page
+                       // For demo purposes, we'll just show an alert
+                       alert('Proceeding to checkout...');
+                       
+                       // Redirect to checkout page
+                       // window.location.href = 'checkout.html';
+                   });
+               }
+           }
+       });</script>
+    <script>/**
+        * Sunu Artt - Forms JavaScript
+        * 
+        * Table of Contents:
+        * 1. Form Validation
+        * 2. Contact Form
+        * 3. Newsletter Form
+        * 4. Order Form
+        */
+       
+       // Wait for DOM to be fully loaded
+       document.addEventListener('DOMContentLoaded', function() {
+           // Initialize forms
+           initContactForm();
+           initNewsletterForm();
+           initOrderForm();
+       });
+       
+       /**
+        * 1. Form Validation
+        */
+       
+       // Validate email format
+       function isValidEmail(email) {
+           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+           return emailRegex.test(email);
+       }
+       
+       // Validate phone number format
+       function isValidPhone(phone) {
+           const phoneRegex = /^\+?[0-9\s\-$$$$]{8,20}$/;
+           return phoneRegex.test(phone);
+       }
+       
+       // Show form error
+       function showFormError(input, message) {
+           const formGroup = input.closest('.form-group');
+           
+           if (formGroup) {
+               const errorElement = formGroup.querySelector('.error-message') || document.createElement('div');
+               
+               if (!formGroup.querySelector('.error-message')) {
+                   errorElement.className = 'error-message';
+                   formGroup.appendChild(errorElement);
+               }
+               
+               errorElement.textContent = message;
+               input.classList.add('error');
+           }
+       }
+       
+       // Clear form error
+       function clearFormError(input) {
+           const formGroup = input.closest('.form-group');
+           
+           if (formGroup) {
+               const errorElement = formGroup.querySelector('.error-message');
+               
+               if (errorElement) {
+                   errorElement.textContent = '';
+               }
+               
+               input.classList.remove('error');
+           }
+       }
+       
+       // Validate form input
+       function validateInput(input) {
+           const value = input.value.trim();
+           const type = input.type;
+           const required = input.hasAttribute('required');
+           
+           // Skip validation if not required and empty
+           if (!required && value === '') {
+               clearFormError(input);
+               return true;
+           }
+           
+           // Required field validation
+           if (required && value === '') {
+               showFormError(input, 'This field is required');
+               return false;
+           }
+           
+           // Email validation
+           if (type === 'email' && !isValidEmail(value)) {
+               showFormError(input, 'Please enter a valid email address');
+               return false;
+           }
+           
+           // Phone validation
+           if (type === 'tel' && value !== '' && !isValidPhone(value)) {
+               showFormError(input, 'Please enter a valid phone number');
+               return false;
+           }
+           
+           // Clear error if validation passes
+           clearFormError(input);
+           return true;
+       }
+       
+       /**
+        * 2. Contact Form
+        */
+       function initContactForm() {
+           const contactForm = document.getElementById('contact-form');
+           
+           if (!contactForm) return;
+           
+           // Add input validation on blur
+           const inputs = contactForm.querySelectorAll('input, textarea, select');
+           
+           inputs.forEach(input => {
+               input.addEventListener('blur', function() {
+                   validateInput(this);
+               });
+               
+               input.addEventListener('input', function() {
+                   if (this.classList.contains('error')) {
+                       validateInput(this);
+                   }
+               });
+           });
+           
+           // Form submission
+           contactForm.addEventListener('submit', function(e) {
+               e.preventDefault();
+               
+               // Validate all inputs
+               let isValid = true;
+               
+               inputs.forEach(input => {
+                   if (!validateInput(input)) {
+                       isValid = false;
+                   }
+               });
+               
+               if (!isValid) {
+                   return;
+               }
+               
+               // Get form data
+               const name = this.querySelector('#name').value;
+               const email = this.querySelector('#email').value;
+               const phone = this.querySelector('#phone').value;
+               const subject = this.querySelector('#subject').value;
+               const message = this.querySelector('#message').value;
+               const newsletter = this.querySelector('#newsletter-signup').checked;
+               
+               // Get form message element
+               const formMessage = this.querySelector('.form-message');
+               
+               // In a real application, you would send this data to your server
+               // For demo purposes, we'll just simulate a successful submission
+               
+               // Show loading state
+               const submitBtn = this.querySelector('button[type="submit"]');
+               const originalBtnText = submitBtn.innerHTML;
+               submitBtn.innerHTML = 'Sending...';
+               submitBtn.disabled = true;
+               
+               // Simulate API call
+               setTimeout(function() {
+                   // Show success message
+                   formMessage.textContent = 'Your message has been sent successfully! We will get back to you soon.';
+                   formMessage.classList.add('success');
+                   
+                   // Reset form
+                   contactForm.reset();
+                   
+                   // Reset button
+                   submitBtn.innerHTML = originalBtnText;
+                   submitBtn.disabled = false;
+                   
+                   // Clear success message after 5 seconds
+                   setTimeout(function() {
+                       formMessage.textContent = '';
+                       formMessage.classList.remove('success');
+                   }, 5000);
+               }, 1500);
+           });
+       }
+       
+       /**
+        * 3. Newsletter Form
+        */
+       function initNewsletterForm() {
+           const newsletterForm = document.querySelector('.newsletter-form');
+           
+           if (!newsletterForm) return;
+           
+           newsletterForm.addEventListener('submit', function(e) {
+               e.preventDefault();
+               
+               const email = this.querySelector('input[type="email"]').value;
+               const formMessage = this.querySelector('.form-message');
+               
+               // Validate email
+               if (!email || !isValidEmail(email)) {
+                   formMessage.textContent = 'Please enter a valid email address.';
+                   formMessage.classList.add('error');
+                   return;
+               }
+               
+               // In a real application, you would send this data to your server
+               // For demo purposes, we'll just simulate a successful subscription
+               
+               // Show loading state
+               const submitBtn = this.querySelector('button[type="submit"]');
+               const originalBtnText = submitBtn.innerHTML;
+               submitBtn.innerHTML = 'Subscribing...';
+               submitBtn.disabled = true;
+               
+               // Simulate API call
+               setTimeout(function() {
+                   // Show success message
+                   formMessage.textContent = 'Thank you for subscribing to our newsletter!';
+                   formMessage.classList.remove('error');
+                   formMessage.classList.add('success');
+                   
+                   // Reset form
+                   newsletterForm.reset();
+                   
+                   // Reset button
+                   submitBtn.innerHTML = originalBtnText;
+                   submitBtn.disabled = false;
+                   
+                   // Clear success message after 5 seconds
+                   setTimeout(function() {
+                       formMessage.textContent = '';
+                       formMessage.classList.remove('success');
+                   }, 5000);
+               }, 1500);
+           });
+       }
+       
+       /**
+        * 4. Order Form
+        */
+       function initOrderForm() {
+           const orderForm = document.getElementById('order-form');
+           
+           if (!orderForm) return;
+           
+           // Add input validation on blur
+           const inputs = orderForm.querySelectorAll('input, textarea, select');
+           
+           inputs.forEach(input => {
+               input.addEventListener('blur', function() {
+                   validateInput(this);
+               });
+               
+               input.addEventListener('input', function() {
+                   if (this.classList.contains('error')) {
+                       validateInput(this);
+                   }
+               });
+           });
+           
+           // Form submission
+           orderForm.addEventListener('submit', function(e) {
+               e.preventDefault();
+               
+               // Validate all inputs
+               let isValid = true;
+               
+               inputs.forEach(input => {
+                   if (!validateInput(input)) {
+                       isValid = false;
+                   }
+               });
+               
+               if (!isValid) {
+                   return;
+               }
+               
+               // Get form data
+               const formData = new FormData(this);
+               const formDataObj = {};
+               
+               for (const [key, value] of formData.entries()) {
+                   formDataObj[key] = value;
+               }
+               
+               // Get form message element
+               const formMessage = this.querySelector('.form-message');
+               
+               // In a real application, you would send this data to your server
+               // For demo purposes, we'll just simulate a successful submission
+               
+               // Show loading state
+               const submitBtn = this.querySelector('button[type="submit"]');
+               const originalBtnText = submitBtn.innerHTML;
+               submitBtn.innerHTML = 'Processing...';
+               submitBtn.disabled = true;
+               
+               // Simulate API call
+               setTimeout(function() {
+                   // Show success message
+                   formMessage.textContent = 'Your order has been placed successfully! We will contact you shortly to confirm the details.';
+                   formMessage.classList.add('success');
+                   
+                   // Reset form
+                   orderForm.reset();
+                   
+                   // Reset button
+                   submitBtn.innerHTML = originalBtnText;
+                   submitBtn.disabled = false;
+                   
+                   // Clear cart if order was successful
+                   localStorage.removeItem('cart');
+                   
+                   // Update cart count
+                   const cartCount = document.querySelector('.cart-count');
+                   if (cartCount) {
+                       cartCount.textContent = '0';
+                   }
+                   
+                   // Redirect to thank you page after 2 seconds
+                   setTimeout(function() {
+                       // window.location.href = 'thank-you.html';
+                       alert('Thank you for your order! You would be redirected to a thank you page in a real application.');
+                   }, 2000);
+               }, 1500);
+           });
+           
+           // Payment method selection
+           const paymentMethods = orderForm.querySelectorAll('input[name="payment_method"]');
+           const paymentDetails = orderForm.querySelectorAll('.payment-details');
+           
+           if (paymentMethods.length > 0 && paymentDetails.length > 0) {
+               paymentMethods.forEach(method => {
+                   method.addEventListener('change', function() {
+                       const selectedMethod = this.value;
+                       
+                       // Hide all payment details
+                       paymentDetails.forEach(detail => {
+                           detail.style.display = 'none';
+                       });
+                       
+                       // Show selected payment details
+                       const selectedDetails = orderForm.querySelector(`.payment-details[data-method="${selectedMethod}"]`);
+                       
+                       if (selectedDetails) {
+                           selectedDetails.style.display = 'block';
+                       }
+                   });
+               });
+           }
+           
+           // Shipping address same as billing address
+           const sameAddressCheckbox = orderForm.querySelector('#same_address');
+           const shippingAddressFields = orderForm.querySelector('.shipping-address-fields');
+           
+           if (sameAddressCheckbox && shippingAddressFields) {
+               sameAddressCheckbox.addEventListener('change', function() {
+                   if (this.checked) {
+                       shippingAddressFields.style.display = 'none';
+                   } else {
+                       shippingAddressFields.style.display = 'block';
+                   }
+               });
+           }
+           
+           // Initialize shipping address fields visibility
+           if (sameAddressCheckbox && shippingAddressFields) {
+               if (sameAddressCheckbox.checked) {
+                   shippingAddressFields.style.display = 'none';
+               } else {
+                   shippingAddressFields.style.display = 'block';
+               }
+           }
+           
+           // Copy billing address to shipping address
+           function copyBillingToShipping() {
+               if (!sameAddressCheckbox || !sameAddressCheckbox.checked) return;
+               
+               const billingFields = {
+                   name: orderForm.querySelector('#billing_name'),
+                   address: orderForm.querySelector('#billing_address'),
+                   city: orderForm.querySelector('#billing_city'),
+                   state: orderForm.querySelector('#billing_state'),
+                   zip: orderForm.querySelector('#billing_zip'),
+                   country: orderForm.querySelector('#billing_country')
+               };
+               
+               const shippingFields = {
+                   name: orderForm.querySelector('#shipping_name'),
+                   address: orderForm.querySelector('#shipping_address'),
+                   city: orderForm.querySelector('#shipping_city'),
+                   state: orderForm.querySelector('#shipping_state'),
+                   zip: orderForm.querySelector('#shipping_zip'),
+                   country: orderForm.querySelector('#shipping_country')
+               };
+               
+               // Copy values
+               for (const field in billingFields) {
+                   if (billingFields[field] && shippingFields[field]) {
+                       shippingFields[field].value = billingFields[field].value;
+                   }
+               }
+           }
+           
+           // Copy billing to shipping when billing fields change
+           const billingFields = orderForm.querySelectorAll('[id^="billing_"]');
+           
+           billingFields.forEach(field => {
+               field.addEventListener('change', copyBillingToShipping);
+           });
+       }
+       
+       // Initialize quick contact form
+       document.addEventListener('DOMContentLoaded', function() {
+           const quickContactForm = document.getElementById('quick-contact-form');
+           
+           if (!quickContactForm) return;
+           
+           quickContactForm.addEventListener('submit', function(e) {
+               e.preventDefault();
+               
+               const name = this.querySelector('#quick-name').value;
+               const email = this.querySelector('#quick-email').value;
+               const message = this.querySelector('#quick-message').value;
+               const formMessage = this.querySelector('.form-message') || this.closest('.quick-contact-panel').querySelector('.form-message');
+               
+               // Simple validation
+               if (!name || !email || !message) {
+                   formMessage.textContent = 'Please fill in all fields.';
+                   formMessage.classList.add('error');
+                   return;
+               }
+               
+               if (!isValidEmail(email)) {
+                   formMessage.textContent = 'Please enter a valid email address.';
+                   formMessage.classList.add('error');
+                   return;
+               }
+               
+               // In a real application, you would send this data to your server
+               // For demo purposes, we'll just simulate a successful submission
+               
+               // Show loading state
+               const submitBtn = this.querySelector('button[type="submit"]');
+               const originalBtnText = submitBtn.innerHTML;
+               submitBtn.innerHTML = 'Sending...';
+               submitBtn.disabled = true;
+               
+               // Simulate API call
+               setTimeout(function() {
+                   // Show success message
+                   formMessage.textContent = 'Your message has been sent successfully! We will get back to you soon.';
+                   formMessage.classList.remove('error');
+                   formMessage.classList.add('success');
+                   
+                   // Reset form
+                   quickContactForm.reset();
+                   
+                   // Reset button
+                   submitBtn.innerHTML = originalBtnText;
+                   submitBtn.disabled = false;
+                   
+                   // Clear success message after 5 seconds
+                   setTimeout(function() {
+                       formMessage.textContent = '';
+                       formMessage.classList.remove('success');
+                   }, 5000);
+               }, 1500);
+           });
+       });</script>
+</body>
+</html>
